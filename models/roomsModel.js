@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const  Books= mongoose.model('Books', {
+const  Rooms= mongoose.model('Rooms', {
     //Easy Signup
 	roomtype: { 
         type: String,require:true
