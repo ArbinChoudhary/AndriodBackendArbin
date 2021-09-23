@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const  Rooms= mongoose.model('Rooms', {
+const  Roomm= mongoose.model('Roomm', {
     //Easy Signup
 	roomtype: { 
         type: String,require:true
@@ -8,13 +8,10 @@ const  Rooms= mongoose.model('Rooms', {
     roomnum: { 
         type: String,require:true
         },
-    desc:{
-        type: String,require:true
-    },
 
     photo:{
         type:String,require:true
     }
 });
 
-module.exports = Rooms;
+module.exports = Roomm;
