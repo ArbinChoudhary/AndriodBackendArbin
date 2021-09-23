@@ -3,21 +3,19 @@ const mongoose = require('mongoose');
 const User= mongoose.model('User', {
     
     //Easy Signup
-    firstname: { 
+    fname: { 
         type: String,require:true
     },
-	lastname: { 
+	lname: { 
         type: String,require:true
     },
-    email :{
+    username :{
         type: String,require:true,unique:true 
     },
     password :{
         type: String,require:true
     },
-    mobileno: { 
-        type: String ,require:true
-    }
+
 });
 
 module.exports = User;

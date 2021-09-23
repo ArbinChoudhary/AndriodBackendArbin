@@ -14,16 +14,15 @@ describe('User Schema test anything', () => {
 // the code below is for insert testing
  it('Add user testing anything', () => {
  const user = {
-"firstname": 'abcd',
- 'lastname': 'abcdefgh',
- 'email': 'test12@gmail.com',
+"fname": 'abcd',
+ 'lname': 'abcdefgh',
+ 'username': 'arbinchy',
  "password":"testing1",
- "mobileno":"7492502"
  };
  
  return user.create(user)
  .then((pro_ret) => {
- expect(pro_ret.firstname).toEqual('testing3 ');
+ expect(pro_ret.fname).toEqual('testing3 ');
  });
  });
  
@@ -31,8 +30,8 @@ describe('User Schema test anything', () => {
  it('login testing anything', () => {
     const user = {
     
-    'email': 'home@gmail.com',
-    "password":"basic123"
+    'username': 'arbinchyy',
+    "password":"arbin123"
 
     };
     

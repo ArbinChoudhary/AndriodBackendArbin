@@ -8,7 +8,6 @@ const database = require('./database/db')
 const public = path.join(__dirname,'')
 const user_routes = require('./routes/userRoutes');
 const rooms_routes = require('./routes/roomsRoutes');
-const message_routes = require('./routes/messageRoutes');
 app.use(cors());
 
 app.use(express.static(public))

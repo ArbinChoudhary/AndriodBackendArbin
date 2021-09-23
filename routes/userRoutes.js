@@ -13,17 +13,9 @@ const upload = require('../middleware/uploads')
 
 router.post('/user/registration',
 [
-    check('firstname',"FirstName must be provided").not().isEmpty(),
-    check('email',"Enter a valid email").isEmail(),
-    check('email',"email already exists!").custom(value =>{
-        return User.findOne({email:value})
-        .then(duplicateemail =>{
-            if(duplicateemail){
-                return Promise.reject("email already exists!")
-            }
-        });
-    }),
-    check('email',"Email must be provided").not().isEmpty(),
+    check('fname',"FirstName must be provided").not().isEmpty(),
+    check('lname',"LastName must be provided").not().isEmpty(),
+    check('username',"UserName must be provided").not().isEmpty(),
     check('password',"Password must be provided").not().isEmpty(),
     check('password',"Password must be of at least six characters").isLength({ min:5 })
 ],
@@ -34,9 +26,8 @@ function(req,res){
         var userData = new User({
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            email : req.body.email,
+            username : req.body.username,
             password : req.body.password,
-            mobileno : req.body.mobileno,
             
         });
        
@@ -70,13 +61,13 @@ function(req,res){
 router.post('/user/login',function(req,res){
 
     
-	const email = req.body.email;
+	const username = req.body.username;
 	const password = req.body.password;
     
 
 
 
-	User.findOne({email: email}).then(function(userModel){
+	User.findOne({username: username}).then(function(userModel){
 
 		if(userModel==null){
 			return res.status(403).json({message : "Invalid Credentials!! Null"})

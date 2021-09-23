@@ -15,7 +15,6 @@ router.post('/room/add',upload.single('photo'),(req, res) => {
     }
     const roomtype =req.body.roomtype;
     const roomnum = req.body.roomnum;
-    const desc =req.body.desc;
     const photo =req.file.path;
 
 
@@ -38,7 +37,7 @@ router.post('/room/add',upload.single('photo'),(req, res) => {
 
 
 router.get('/rooms/showalls',function(req,res){
-    Rooms.find()
+    Roomm.find()
     .then(function(room){
         res.status(200).json({success:true,data:room});
     })
@@ -53,14 +52,12 @@ router.put('/rooms/update/:id',auth.verifyUser,upload.single('photo'), function(
 	const id = req.params.id;
 	const roomtype =req.body.roomtype;
     const roomnum=req.body.roomnum;
-    const desc = req.body.desc;
 
     
 
-	Rooms.updateOne({_id:id},{
+	Roomm.updateOne({_id:id},{
         roomtype : roomtype,
         roomnum:roomnum,
-        desc:desc,
         photo:req.file.path,
     })
     .then(function(data){
@@ -75,7 +72,7 @@ router.put('/rooms/update/:id',auth.verifyUser,upload.single('photo'), function(
 
 router.delete('/rooms/delete/:id',auth.verifyUser,function(req,res){
     const id =req.params.id
-    Rooms.deleteOne({_id:id})
+    Roomm.deleteOne({_id:id})
     .then(function(data){
         res.status(200).json({message:"Deleted"});
     })
@@ -89,7 +86,7 @@ router.delete('/rooms/delete/:id',auth.verifyUser,function(req,res){
 
 
 router.get('/rooms/showall',function(req,res){
-    Rooms.find()
+    Roomm.find()
     .then(function(book){
         res.status(200).json(book);
     })
@@ -103,7 +100,7 @@ router.get('/rooms/showall',function(req,res){
 router.get("/rooms/single/:id",function(req,res){
     console.log("single")
     const id = req.params.id;
-    Rooms.findOne({_id:id})
+    Roomm.findOne({_id:id})
     .then(function(data){
         res.status(200).json(data);
     })
